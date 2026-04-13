@@ -1,0 +1,76 @@
+
+@Metadata.layer: #CORE
+@UI: {
+  headerInfo: {
+    typeName:       'Tournament',
+    typeNamePlural: 'Tournaments',
+    title:  { type: #STANDARD, label: 'Tournament', value: 'TournamentId' },
+    description: { type: #STANDARD, value: 'TournamentName' }
+  }
+}
+annotate entity ZCIC_TRMT_IT023 with
+{
+  @UI.facet: [
+    { id: 'TournamentHeader', purpose: #STANDARD,
+      type: #IDENTIFICATION_REFERENCE,
+      label: 'Tournament Details', position: 10 },
+    { id: 'Matches', purpose: #STANDARD,
+      type: #LINEITEM_REFERENCE,
+      label: 'Match Details', position: 20,
+      targetElement: '_Match' }
+  ]
+ 
+  @UI: { lineItem:[{position:10,label:'Tournament ID'}],
+         identification:[{position:10,label:'Tournament ID'}],
+         selectionField:[{position:10}] }
+  TournamentId;
+ 
+  @UI: { lineItem:[{position:20,label:'Name'}],
+         identification:[{position:20,label:'Tournament Name'}],
+         selectionField:[{position:20}] }
+  TournamentName;
+ 
+  @UI: { lineItem:[{position:30,label:'Sport'}],
+         identification:[{position:30,label:'Sport'}],
+         selectionField:[{position:30}] }
+  Sport;
+ 
+  @UI: { lineItem:[{position:40,label:'Start Date'}],
+         identification:[{position:40,label:'Start Date'}] }
+  StartDate;
+ 
+  @UI: { lineItem:[{position:50,label:'End Date'}],
+         identification:[{position:50,label:'End Date'}] }
+  EndDate;
+ 
+  @UI: { lineItem:[{position:60,label:'Venue'}],
+         identification:[{position:60,label:'Venue'}] }
+  Venue;
+ 
+  @UI: { lineItem:[{position:70,label:'Organizer'}],
+         identification:[{position:70,label:'Organizer'}] }
+  Organizer;
+ 
+  @UI: { lineItem:[{position:80,label:'Status'}],
+         identification:[{position:80,label:'Status'}],
+         selectionField:[{position:40}] }
+  Status;
+ 
+  @UI: { lineItem:[{position:90,label:'Max Teams'}],
+         identification:[{position:90,label:'Max Teams'}] }
+  MaxTeams;
+ 
+  @UI: { lineItem:[{position:100,label:'Prize Pool'}],
+         identification:[{position:100,label:'Prize Pool Amount'}] }
+  PrizePoolAmount;
+ 
+  @UI: { lineItem:[{position:110,label:'Currency'}],
+         identification:[{position:110,label:'Currency'}] }
+  Currency;
+ 
+  @UI: { identification:[{position:120,label:'Created By'}] }
+  LocalCreatedBy;
+ 
+  @UI: { identification:[{position:130,label:'Created At'}] }
+  LocalCreatedAt;
+}

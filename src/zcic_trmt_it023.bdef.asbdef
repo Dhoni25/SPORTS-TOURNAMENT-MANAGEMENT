@@ -1,0 +1,23 @@
+projection;
+strict ( 2 );
+use draft;
+
+define behavior for ZCIC_TRMT_IT023 alias Tournament
+{
+  use create;
+  use update;
+  use delete;
+  use action Edit;
+  use action Activate;
+  use action Discard;
+  use action Prepare;
+  use action Resume;
+  use association _Match { create; with draft; }
+}
+
+define behavior for ZCIC_MTCH_IT023 alias Match
+{
+  use update;
+  use delete;
+  use association _Tournament { with draft; }
+}

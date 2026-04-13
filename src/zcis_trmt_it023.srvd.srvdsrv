@@ -1,0 +1,5 @@
+@EndUserText.label: 'Sports Tournament Service Definition'
+define service ZCIS_TRMT_IT023 {
+  expose ZCIC_TRMT_IT023;
+  expose ZCIC_MTCH_IT023;
+}

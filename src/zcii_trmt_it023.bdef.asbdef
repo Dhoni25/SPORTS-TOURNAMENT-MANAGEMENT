@@ -1,0 +1,80 @@
+unmanaged implementation in class zbp_trmt_it023_s unique;
+strict ( 2 );
+with draft;
+
+define behavior for ZCII_TRMT_IT023 alias Tournament
+  implementation in class zbp_trmt_it023_h unique
+  draft table zcid_trmt_it023
+  lock master total etag LocalLastChangedAt
+  authorization master ( instance )
+  etag master LocalLastChangedAt
+{
+  create ( authorization : global );
+  update;
+  delete;
+
+  draft action Edit;
+  draft action Resume;
+  draft determine action Prepare;
+  draft action Activate optimized;
+  draft action Discard;
+
+  field ( mandatory : create )  TournamentId;
+  field ( readonly  : update )  TournamentId;
+  field ( readonly )            LocalLastChangedAt;
+
+  association _Match { create; with draft; }
+
+  mapping for zcit_trmt_it023
+  {
+    TournamentId       = tournamentid;
+    TournamentName     = tournamentname;
+    Sport              = sport;
+    StartDate          = startdate;
+    EndDate            = enddate;
+    Venue              = venue;
+    Organizer          = organizer;
+    Status             = status;
+    MaxTeams           = maxteams;
+    PrizePoolAmount    = prizepoolamount;
+    Currency           = currency;
+    LocalCreatedBy     = local_created_by;
+    LocalCreatedAt     = local_created_at;
+    LocalLastChangedBy = local_last_changed_by;
+    LocalLastChangedAt = local_last_changed_at;
+  }
+}
+
+define behavior for ZCII_MTCH_IT023 alias Match
+  implementation in class zbp_mtch_it023_h unique
+  draft table zcid_mtch_it023
+  lock dependent by _Tournament
+  authorization dependent by _Tournament
+  etag master LocalLastChangedAt
+{
+  update;
+  delete;
+
+  field ( readonly : update, mandatory : create ) MatchNumber;
+  field ( readonly ) TournamentId;
+
+  association _Tournament { with draft; }
+
+  mapping for zcit_mtch_it023
+  {
+    TournamentId       = tournamentid;
+    MatchNumber        = matchnumber;
+    Team1              = team1;
+    Team2              = team2;
+    MatchDate          = matchdate;
+    MatchVenue         = matchvenue;
+    Team1Score         = team1score;
+    Team2Score         = team2score;
+    Winner             = winner;
+    MatchStatus        = matchstatus;
+    LocalCreatedBy     = local_created_by;
+    LocalCreatedAt     = local_created_at;
+    LocalLastChangedBy = local_last_changed_by;
+    LocalLastChangedAt = local_last_changed_at;
+  }
+}

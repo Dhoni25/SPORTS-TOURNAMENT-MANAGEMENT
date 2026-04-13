@@ -1,0 +1,63 @@
+
+@Metadata.layer: #CORE
+@UI: {
+  headerInfo: {
+    typeName:       'Match',
+    typeNamePlural: 'Matches',
+    title: { type: #STANDARD, label: 'Match', value: 'MatchNumber' }
+  }
+}
+annotate entity ZCIC_MTCH_IT023 with
+{
+  @UI.facet: [
+    { id: 'MatchDetails', purpose: #STANDARD,
+      type: #IDENTIFICATION_REFERENCE,
+      label: 'Match Details', position: 10 }
+  ]
+ 
+  @UI: { lineItem:[{position:10,label:'Tournament ID'}],
+         identification:[{position:10,label:'Tournament ID'}] }
+  TournamentId;
+ 
+  @UI: { lineItem:[{position:20,label:'Match No.'}],
+         identification:[{position:20,label:'Match Number'}] }
+  MatchNumber;
+ 
+  @UI: { lineItem:[{position:30,label:'Team 1'}],
+         identification:[{position:30,label:'Team 1'}] }
+  Team1;
+ 
+  @UI: { lineItem:[{position:40,label:'Team 2'}],
+         identification:[{position:40,label:'Team 2'}] }
+  Team2;
+ 
+  @UI: { lineItem:[{position:50,label:'Match Date'}],
+         identification:[{position:50,label:'Match Date'}] }
+  MatchDate;
+ 
+  @UI: { lineItem:[{position:60,label:'Venue'}],
+         identification:[{position:60,label:'Match Venue'}] }
+  MatchVenue;
+ 
+  @UI: { lineItem:[{position:70,label:'Team 1 Score'}],
+         identification:[{position:70,label:'Team 1 Score'}] }
+  Team1Score;
+ 
+  @UI: { lineItem:[{position:80,label:'Team 2 Score'}],
+         identification:[{position:80,label:'Team 2 Score'}] }
+  Team2Score;
+ 
+  @UI: { lineItem:[{position:90,label:'Winner'}],
+         identification:[{position:90,label:'Winner'}] }
+  Winner;
+ 
+  @UI: { lineItem:[{position:100,label:'Status'}],
+         identification:[{position:100,label:'Match Status'}],
+         selectionField:[{position:10}] }
+  MatchStatus;
+ 
+  @UI.hidden: true  LocalCreatedBy;
+  @UI.hidden: true  LocalCreatedAt;
+  @UI.hidden: true  LocalLastChangedBy;
+  @UI.hidden: true  LocalLastChangedAt;
+}
